@@ -68,7 +68,7 @@ export const RegisterScreen: React.FC<
             style={[
               styles.button,
               {
-                paddingVertical: 20,
+                paddingVertical: 22,
                 justifyContent: 'center',
                 alignItems: 'center',
                 paddingHorizontal: 70,
@@ -78,6 +78,7 @@ export const RegisterScreen: React.FC<
             textColor="#fff"
             text="Sign in"
           />
+          
           <Button
             width={58}
             height={19}

@@ -52,7 +52,7 @@ export const ConditionsScreen: React.FC<
         titleColor={colors.white}
       />
       <ScrollView>
-        <View style={{marginBottom: 20, padding: 10}}>
+        <View style={{marginBottom: 20, padding: 10,marginTop:-20}}>
           <FlashList
             scrollEnabled={false}
             data={Conditions}
