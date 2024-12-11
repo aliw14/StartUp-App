@@ -30,7 +30,6 @@ export const WelcomeScreen: React.FC<
   return (
     <ImageBackground
       source={require('../assets/images/bgImg.jpg')}
-      resizeMode="contain"
       style={styles.container}>
       <View style={styles.main}>
         <Image
@@ -70,7 +69,7 @@ export const WelcomeScreen: React.FC<
           <View style={styles.modalContainer}>
             <FastImage
               style={styles.loadingImage}
-              source={require('../assets/images/loadingLogo.gif')}
+              source={require('../assets/images/main.gif')}
               resizeMode={FastImage.resizeMode.contain}
             />
           </View>

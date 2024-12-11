@@ -143,9 +143,11 @@ const styles = StyleSheet.create({
     paddingRight: 16,
   },
   title: {
-    fontWeight: '500',
-    fontSize: 14,
+    fontSize: 18,
     color: colors.bg.blue,
+    fontFamily: 'Aragon Sans Bold',
+    fontWeight: '500',
+    width: '80%',
   },
   description: {
     fontSize: 14,
@@ -169,7 +171,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 24,
     fontWeight: '400',
-    fontFamily: 'Aragon Sans SC Bold',
+    fontFamily: 'Araboto Normal',
   },
   rightIcon: {
     width: 24,

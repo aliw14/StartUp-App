@@ -56,6 +56,8 @@ const styles = StyleSheet.create({
     width: 328,
     alignSelf: 'center',
     marginTop: 20,
+    fontFamily: 'Aragon Sans SC Bold',
+    fontWeight: '500',
   },
   userBox: {
     flexDirection: 'row',

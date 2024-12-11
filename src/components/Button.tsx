@@ -46,5 +46,6 @@ const styles = StyleSheet.create({
     width: 'auto',
     height: 'auto',
     fontFamily: 'Aragon Sans SC Bold',
+    fontWeight: '700',
   },
 });

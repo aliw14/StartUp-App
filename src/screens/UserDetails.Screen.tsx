@@ -76,40 +76,40 @@ export const UserDetailsScreen: React.FC<
           textColor={colors.red.line}></Button>
         <View style={styles.travelers}>
           <View style={styles.header}>
-            <Text style={styles.headerText}>Travelers</Text>
-            <Text style={styles.headerText}>Confirmation Number</Text>
+            <Text style={styles.headerText}>TRAVELERS</Text>
+            <Text style={styles.headerText}>CONFIRMATION NUMBER</Text>
           </View>
           <View style={styles.travelersDesc}>
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Text>Hasan Hasanov</Text>
+              <Text>HASAN HASANOV</Text>
               <Text>20465023</Text>
             </View>
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Text>Elxan Asadov</Text>
+              <Text>ELXAN ASADOV</Text>
               <Text>20465024</Text>
             </View>
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Text>Bugra Erdogan</Text>
+              <Text>BUGRA ERDOGAN</Text>
               <Text>20465025</Text>
             </View>
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Text>Davud Huseynov</Text>
+              <Text>DAVUD HUSEYNOV</Text>
               <Text>20465026</Text>
             </View>
           </View>
         </View>
         <View style={styles.appointmentDetails}>
-          <Text style={styles.appointmetHeader}>Appointment Details</Text>
+          <Text style={styles.appointmetHeader}>APPOINTMENT DETAILS</Text>
           <View style={styles.appointmentDesc}>
             <FlashList data={userDetails} renderItem={renderItem}></FlashList>
           </View>
         </View>
         <View style={styles.appointmentDetails}>
-          <Text style={styles.steps}>Next Steps</Text>
+          <Text style={styles.steps}>NEXT STEPS</Text>
           <View style={styles.appointmentDesc}>
             <FlashList
               scrollEnabled={false}
@@ -155,11 +155,13 @@ const styles = StyleSheet.create({
     color: colors.gray.open,
     textAlign: 'center',
     marginTop: 11,
+    fontWeight: '700',
+    fontFamily: 'Araboto Normal',
   },
   text: {
     fontSize: 14,
     color: colors.gray.open,
-    fontWeight: '400',
+    fontFamily: 'Araboto Normal',
   },
   bottomText: {
     gap: 20,
@@ -189,9 +191,10 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 14,
-    fontWeight: '600',
     color: colors.bg.blue,
     paddingHorizontal: 6,
+    fontFamily: 'Aragon Sans SC Bold',
+    fontWeight: '700',
   },
   travelersDesc: {
     width: '90%',
@@ -209,12 +212,13 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: '#F2F2F2',
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: '700',
     textAlign: 'center',
     color: colors.bg.blue,
     textAlignVertical: 'center',
     justifyContent: 'center',
     alignItems: 'center',
+    fontFamily: 'Aragon Sans SC Bold',
   },
   appointmentDesc: {
     width: Dimensions.get('screen').width - 40,
@@ -224,12 +228,13 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: '#F2F2F2',
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: '700',
     color: colors.bg.blue,
     textAlignVertical: 'center',
     justifyContent: 'center',
     alignItems: 'center',
     paddingLeft: 20,
+    fontFamily: 'Aragon Sans SC Bold',
   },
 });
 
