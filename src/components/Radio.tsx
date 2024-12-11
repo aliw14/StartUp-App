@@ -91,8 +91,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginLeft: 16,
     color: '#333333',
-    fontWeight: '500',
-    fontFamily: 'Aragon Sans SC Bold',
+    fontWeight: '400',
+    // fontFamily: 'Aragon Sans SC Bold',
   },
   textFullWidth: {
     marginLeft: 50,
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     borderColor: '#6b7280',
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 20,
+    marginRight: 10,
   },
   innerCircle: {
     height: 8,

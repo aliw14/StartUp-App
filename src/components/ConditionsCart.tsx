@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     color: colors.bg.blue,
     fontFamily: 'Aragon Sans Bold',
     fontWeight: '500',
-    width: '80%',
+    width: '90%',
   },
   description: {
     fontSize: 14,
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 4,
     fontWeight: '400',
-    fontFamily: 'Aragon Sans SC Bold',
+    fontFamily: 'Araboto Normal',
   },
   additionalText: {
     color: colors.black,

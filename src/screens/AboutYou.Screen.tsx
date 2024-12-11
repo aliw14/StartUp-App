@@ -56,7 +56,7 @@ export const AboutYouScreen: React.FC<
           una de las opciones a continuacion.
         </Text>
       </View>
-      <ScrollView style={{marginLeft: 10, marginTop: -20}}>
+      <ScrollView style={{marginLeft: 10, marginTop: -15}}>
         <FlatList
           scrollEnabled={false}
           data={About}

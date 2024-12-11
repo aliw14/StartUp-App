@@ -80,9 +80,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   title: {
-    fontSize: 14,
-    fontWeight: '400',
+    fontSize: 13,
+    fontWeight: '300',
     margin: 16,
+    width: '90%',
   },
   buttons: {
     flexDirection: 'row',

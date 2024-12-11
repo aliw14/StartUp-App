@@ -78,6 +78,7 @@ export const RegisterScreen: React.FC<
             textColor="#fff"
             text="Sign in"
           />
+          
           <Button
             width={58}
             height={19}
