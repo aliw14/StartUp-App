@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     color: '#333333',
     fontWeight: '500',
+    fontFamily: 'Aragon Sans SC Bold',
   },
   textFullWidth: {
     marginLeft: 50,

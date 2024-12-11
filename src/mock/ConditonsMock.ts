@@ -95,7 +95,7 @@ export const Traveler: IConditionsCart[] = [
 export const advanceInformation = [
     {
         id: 1,
-        title: 'Arrive at the Port of Entry',
+        title: 'Register Travelers',
         description: 'Register everyone travelling together. Everyone must be going to the same United States address and have the same prior foreign address.',
     },
     {

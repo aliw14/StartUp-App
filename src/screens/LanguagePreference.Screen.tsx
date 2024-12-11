@@ -19,12 +19,12 @@ export const LanguagePreferenceScreen: React.FC<
       value: 'English',
     },
     {
-      label: 'Espanol',
-      value: 'Espanol',
+      label: 'Español',
+      value: 'Español',
     },
     {
-      label: 'Kreyol ayisyen',
-      value: 'Kreyol ayisyen',
+      label: 'Kreyòl asisyen',
+      value: 'Kreyòl asisyen',
     },
   ];
 
@@ -88,14 +88,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   text: {
-    fontSize: 15,
     fontWeight: '400',
+    fontFamily: 'Aragon Sans SC Bold',
+    width: 'auto',
   },
   texts: {
     gap: 10,
     marginTop: 19,
     alignSelf: 'center',
-    width: 331,
   },
   buttonContainer: {
     flex: 1,

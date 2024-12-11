@@ -59,7 +59,7 @@ export const HomeScreen: React.FC<
         <View style={styles.modalContainer}>
           <FastImage
             style={styles.loadingImage}
-            source={require('../assets/images/loadingLogo.gif')}
+            source={require('../assets/images/main.gif')}
             resizeMode={FastImage.resizeMode.contain}
           />
         </View>

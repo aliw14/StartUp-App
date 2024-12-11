@@ -64,8 +64,16 @@ export const RegisterScreen: React.FC<
         <View style={styles.buttons}>
           <Button
             width={58}
-            height={19}
-            style={styles.button}
+            height={29}
+            style={[
+              styles.button,
+              {
+                paddingVertical: 20,
+                justifyContent: 'center',
+                alignItems: 'center',
+                paddingHorizontal: 70,
+              },
+            ]}
             backgroundColor="#0266B3"
             textColor="#fff"
             text="Sign in"
@@ -74,18 +82,15 @@ export const RegisterScreen: React.FC<
             width={58}
             height={19}
             textColor="#0266B3"
-            style={styles.button}
+            style={[styles.button, {width: '70%'}]}
             text="Create an account"
           />
         </View>
         <View style={{flexDirection: 'column', flex: 1}}>
           <Text style={styles.formTitle}>Sign in for existing users</Text>
           <View>
-            <Input caption="Email address"/>
-            <Input
-              caption="Password"
-              secureTextEntry={!showPassword}
-            />
+            <Input caption="Email address" />
+            <Input caption="Password" secureTextEntry={!showPassword} />
           </View>
           <View style={styles.showPasswordContainer}>
             <Pressable onPress={togglePasswordVisibility}>
@@ -182,7 +187,7 @@ export const RegisterScreen: React.FC<
         <View style={styles.modalContainer}>
           <FastImage
             style={styles.loadingImage}
-            source={require('../assets/images/loadingLogo.gif')}
+            source={require('../assets/images/main.gif')}
             resizeMode={FastImage.resizeMode.contain}
           />
         </View>

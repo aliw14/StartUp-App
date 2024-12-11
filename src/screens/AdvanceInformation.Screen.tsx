@@ -121,7 +121,7 @@ export const AdvanceInformationScreen: React.FC<
           {loading ? (
             <FastImage
               style={styles.loadingImage}
-              source={require('../assets/images/loadingLogo.gif')}
+              source={require('../assets/images/main.gif')}
               resizeMode={FastImage.resizeMode.contain}
             />
           ) : (
