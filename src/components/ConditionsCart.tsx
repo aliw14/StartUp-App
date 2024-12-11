@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: colors.black,
     marginTop: 4,
-    fontFamily: 'Aragon Sans SC Bold',
+    fontFamily: 'Araboto Normal',
   },
   icon: {
     width: 24,
