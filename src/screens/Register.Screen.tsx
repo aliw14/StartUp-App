@@ -63,27 +63,15 @@ export const RegisterScreen: React.FC<
       <View style={{paddingHorizontal: 14, flex: 1}}>
         <View style={styles.buttons}>
           <Button
-            width={58}
-            height={29}
-            style={[
-              styles.button,
-              {
-                paddingVertical: 22,
-                justifyContent: 'center',
-                alignItems: 'center',
-                paddingHorizontal: 70,
-              },
-            ]}
+            style={styles.signInButton}
             backgroundColor="#0266B3"
             textColor="#fff"
             text="Sign in"
           />
-          
+
           <Button
-            width={58}
-            height={19}
+            style={styles.createAccountButton}
             textColor="#0266B3"
-            style={[styles.button, {width: '70%'}]}
             text="Create an account"
           />
         </View>
@@ -218,14 +206,6 @@ const styles = StyleSheet.create({
     borderColor: '#0266B3',
     borderRadius: 8,
   },
-  buttons: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: 25,
-    borderWidth: 1,
-    borderColor: '#0266B3',
-    borderRadius: 8,
-  },
   formTitle: {
     fontSize: 20,
     fontWeight: '600',
@@ -246,12 +226,34 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginBottom: 10,
   },
-  // input: {
-  //   height: 50,
-  //   borderColor: colors.border.bottom,
-  //   borderRadius: 8,
-  //   marginBottom: 15,
-  // },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 25,
+    borderWidth: 1,
+    borderColor: '#0266B3',
+    borderRadius: 8,
+  },
+
+  signInButton: {
+    flex: 1,
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 8,
+  },
+
+  createAccountButton: {
+    flex: 1,
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 8,
+    borderColor: '#0266B3',
+    flexWrap: 'wrap',
+    textAlign: 'center',
+  },
+
   showPasswordContainer: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
   cart: {
-    paddingBottom: 20,
+    paddingBottom: 10,
     width: '100%',
     borderRadius: 8,
   },
@@ -145,15 +145,15 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     color: colors.bg.blue,
-    fontFamily: 'Aragon Sans Bold',
-    fontWeight: '500',
+    fontFamily: 'Araboto Normal',
+    fontWeight: '700',
     width: '90%',
   },
   description: {
     fontSize: 14,
     color: colors.black,
     marginTop: 4,
-    fontFamily: 'Araboto Normal',
+    fontFamily: 'Lato-Regular',
   },
   icon: {
     width: 24,
@@ -163,15 +163,13 @@ const styles = StyleSheet.create({
     color: colors.bg.openBlue,
     fontSize: 14,
     marginTop: 4,
-    fontWeight: '400',
-    fontFamily: 'Araboto Normal',
+    fontFamily: 'Lato-Regular',
   },
   additionalText: {
     color: colors.black,
     fontSize: 14,
     marginTop: 24,
-    fontWeight: '400',
-    fontFamily: 'Araboto Normal',
+    fontFamily: 'Lato-Regular',
   },
   rightIcon: {
     width: 24,

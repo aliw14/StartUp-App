@@ -89,9 +89,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: '400',
-    // fontFamily: 'Aragon Sans SC Bold',
     width: 'auto',
-    fontSize: 12,
+    fontSize: 13,
   },
   texts: {
     gap: 10,

@@ -1,4 +1,4 @@
-import React, {useState, useRef, useCallback} from 'react';
+import React, {useState, useRef, useCallback, useEffect} from 'react';
 import {
   Modal,
   ScrollView,
@@ -19,6 +19,7 @@ import {Routes} from '../router/routes';
 import {Button} from '../components/Button';
 import FastImage from 'react-native-fast-image';
 import Captcha from '../components/Captcha';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const AdvanceInformationScreen: React.FC<
   NativeStackScreenProps<NavigationParamList, Routes.advanceInformation>
@@ -27,26 +28,44 @@ export const AdvanceInformationScreen: React.FC<
   const [validateResult, setValidateResult] = useState<string>('');
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+  const [isCaptchaPassed, setIsCaptchaPassed] = useState<boolean>(false);
 
   const captchaRef = useRef<any>(null);
+
+  useEffect(() => {
+    // Uygulama başlatıldığında CAPTCHA durumunu kontrol et
+    const checkCaptchaStatus = async () => {
+      const passed = await AsyncStorage.getItem('captchaPassed');
+      if (passed === 'true') {
+        setIsCaptchaPassed(true);
+      }
+    };
+    checkCaptchaStatus();
+  }, []);
 
   const handleRefresh = useCallback((newCaptcha: string) => {
     console.log('New CAPTCHA:', newCaptcha);
   }, []);
 
   const handleContinuePress = () => {
-    setModalVisible(true);
+    if (isCaptchaPassed) {
+      navigation.navigate(Routes.userList);
+    } else {
+      setModalVisible(true);
+    }
   };
 
-  const handleVerifyPress = () => {
+  const handleVerifyPress = async () => {
     setLoading(true);
     const check = captchaRef.current?.validateCaptcha(captcha);
 
-    setTimeout(() => {
+    setTimeout(async () => {
       setLoading(false);
 
       if (check) {
         setModalVisible(false);
+        setIsCaptchaPassed(true);
+        await AsyncStorage.setItem('captchaPassed', 'true');
         navigation.navigate(Routes.userList);
       } else {
         setValidateResult('Please enter the matching letters and numbers');
@@ -93,6 +112,7 @@ export const AdvanceInformationScreen: React.FC<
           }
         />
       </ScrollView>
+
       <View style={styles.buttons}>
         <Button
           width={58}
@@ -156,6 +176,19 @@ export const AdvanceInformationScreen: React.FC<
       </Modal>
     </View>
   );
+};
+
+const vectors = {
+  arrow_left: {
+    icon: require('../assets/vectors/arrow_left.svg'),
+    width: 24,
+    height: 24,
+  },
+  human: {
+    icon: require('../assets/vectors/human.svg'),
+    width: 24,
+    height: 24,
+  },
 };
 
 const styles = StyleSheet.create({
@@ -235,18 +268,5 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
 });
-
-const vectors = {
-  arrow_left: {
-    icon: require('../assets/vectors/arrow_left.svg'),
-    width: 24,
-    height: 24,
-  },
-  human: {
-    icon: require('../assets/vectors/human.svg'),
-    width: 24,
-    height: 24,
-  },
-};
 
 export default AdvanceInformationScreen;
