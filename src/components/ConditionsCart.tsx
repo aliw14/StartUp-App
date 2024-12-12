@@ -146,7 +146,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: colors.bg.blue,
     fontFamily: 'Araboto Normal',
-    fontWeight: '700',
     width: '90%',
   },
   description: {
