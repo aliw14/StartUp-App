@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Header} from '../components/Header';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
@@ -7,7 +7,6 @@ import {Routes} from '../router/routes';
 import {colors} from '../theme/colors';
 import {Button} from '../components/Button';
 import {SvgImage} from '../components/SvgImage';
-import {ConditionsCart} from '../components/ConditionsCart';
 
 export const UserListScreen: React.FC<
   NativeStackScreenProps<NavigationParamList, Routes.userList>
@@ -27,21 +26,32 @@ export const UserListScreen: React.FC<
         onPress={() => navigation.navigate(Routes.userDetails)}
         style={styles.button}
         text="REGISTER TRAVELERS"
-        backgroundColor={colors.bg.openBlue}
+        backgroundColor={colors.bg.blue}
         textColor={colors.white}
       />
+      <View
+        style={{
+          borderBottomWidth: 1,
+          marginTop: 20,
+          borderBottomColor: colors.border.line,
+        }}></View>
       <View style={styles.userBox}>
         <SvgImage
           source={require('../assets/vectors/check.svg')}
           style={styles.svgImage}
         />
-        <ConditionsCart
-          onPress={() => navigation.navigate(Routes.userDetails)}
-          titleColor={colors.black}
-          title="APPOINTMENT SCHEDULED"
-          description="Garita El Chaparra / Pedwest San on Nov 15, 2024 at 20:00"
-          style={styles.conditionsCart}
-        />
+        <View style={styles.customConditionsCart}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(Routes.userDetails)}
+            style={styles.touchableContainer}>
+            <Text style={[styles.title, {color: colors.black}]}>
+              APPOINTMENT SCHEDULED
+            </Text>
+            <Text style={styles.description}>
+              Garita El Chaparra / Pedwest San on Nov 15, 2024 at 20:00
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -52,24 +62,37 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   button: {
-    borderRadius: 8,
+    borderRadius: 3,
     width: 328,
     alignSelf: 'center',
     marginTop: 20,
-    fontFamily: 'Aragon Sans SC Bold',
-    fontWeight: '500',
+    fontFamily: 'Lato-Bold',
   },
   userBox: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 10,
     marginLeft: 20,
   },
   svgImage: {
     marginRight: 10,
   },
-  conditionsCart: {
+  customConditionsCart: {
     flex: 1,
+    padding: 10,
+    borderRadius: 5,
+  },
+  touchableContainer: {
+    flexDirection: 'column',
+  },
+  title: {
+    fontSize: 14,
+    fontFamily: 'Araboto-Normal',
+  },
+  description: {
+    fontSize: 11,
+    width: '85%',
+    fontFamily: 'Lato-Regular',
   },
 });
 

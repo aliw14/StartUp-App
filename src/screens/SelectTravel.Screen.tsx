@@ -49,7 +49,6 @@ export const SelectTravelScreen: React.FC<
         options={options}
         checkedValue={selectedValue}
         onChange={setSelectedValue}
-        // onPress={() => navigation.navigate(Routes.home)}
       />
       <View style={styles.buttons}>
         <Button
@@ -81,7 +80,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 13,
-    fontWeight: '300',
+    fontWeight: '400',
     margin: 16,
     width: '90%',
   },

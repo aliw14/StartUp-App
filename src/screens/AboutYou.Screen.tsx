@@ -93,14 +93,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: '600',
     color: '#00497C',
   },
   description: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: '400',
     marginTop: 8,
+    width:"110%"
   },
   modalContainer: {
     flex: 1,
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
   top: {
     width: 330,
     height: 98,
-    marginTop: 13,
+    marginTop: 10,
     alignSelf: 'center',
   },
 });

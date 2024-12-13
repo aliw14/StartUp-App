@@ -1,4 +1,4 @@
-import React, {useState, useRef, useCallback, useEffect} from 'react';
+import React, {useState, useEffect, useCallback, useRef} from 'react';
 import {
   Modal,
   ScrollView,
@@ -7,6 +7,7 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  AppState,
 } from 'react-native';
 import {Header} from '../components/Header';
 import {colors} from '../theme/colors';
@@ -29,29 +30,48 @@ export const AdvanceInformationScreen: React.FC<
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [isCaptchaPassed, setIsCaptchaPassed] = useState<boolean>(false);
+  const [initialModalShown, setInitialModalShown] = useState<boolean>(false);
 
   const captchaRef = useRef<any>(null);
 
   useEffect(() => {
-    // Uygulama başlatıldığında CAPTCHA durumunu kontrol et
-    const checkCaptchaStatus = async () => {
-      const passed = await AsyncStorage.getItem('captchaPassed');
-      if (passed === 'true') {
-        setIsCaptchaPassed(true);
+    const checkFirstTimeModal = async () => {
+      try {
+        const modalShown = await AsyncStorage.getItem('modalShown');
+        if (!modalShown) {
+          setModalVisible(true);
+          setInitialModalShown(true);
+        }
+      } catch (error) {
+        console.error('Error checking modal status:', error);
       }
     };
-    checkCaptchaStatus();
+
+    const appStateListener = AppState.addEventListener(
+      'change',
+      nextAppState => {
+        if (nextAppState === 'active') {
+          checkFirstTimeModal();
+        }
+      },
+    );
+
+    return () => {
+      appStateListener.remove();
+    };
   }, []);
 
   const handleRefresh = useCallback((newCaptcha: string) => {
     console.log('New CAPTCHA:', newCaptcha);
   }, []);
 
-  const handleContinuePress = () => {
-    if (isCaptchaPassed) {
+  const handleContinuePress = async () => {
+    if (isCaptchaPassed || initialModalShown) {
       navigation.navigate(Routes.userList);
     } else {
       setModalVisible(true);
+      setCaptcha('');
+      setValidateResult('');
     }
   };
 
@@ -65,7 +85,13 @@ export const AdvanceInformationScreen: React.FC<
       if (check) {
         setModalVisible(false);
         setIsCaptchaPassed(true);
-        await AsyncStorage.setItem('captchaPassed', 'true');
+
+        try {
+          await AsyncStorage.setItem('modalShown', 'true');
+        } catch (error) {
+          console.error('Error saving captcha status:', error);
+        }
+
         navigation.navigate(Routes.userList);
       } else {
         setValidateResult('Please enter the matching letters and numbers');
@@ -104,6 +130,7 @@ export const AdvanceInformationScreen: React.FC<
                 linkText={item.linkText}
                 isLast={isLast}
                 style={{marginVertical: 0}}
+                titleFontSize={15}
               />
             );
           }}
@@ -197,7 +224,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   text: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: '600',
     color: colors.bg.blue,
     paddingVertical: 15,
@@ -225,34 +252,25 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '100%',
-    marginVertical: 10,
+    marginTop: 10,
   },
   input: {
     flex: 1,
     borderWidth: 1,
-    borderColor: colors.bg.blue,
-    padding: 10,
+    borderColor: '#ccc',
     borderRadius: 5,
+    padding: 10,
     marginRight: 10,
   },
   verifyButton: {
-    backgroundColor: colors.bg.blue,
-    padding: 10,
+    backgroundColor: colors.bg.openBlue,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
     borderRadius: 5,
-    width: 100,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   buttonText: {
     color: colors.white,
-    fontSize: 16,
-  },
-  modalText: {
-    fontSize: 16,
-    fontWeight: '600',
-    textAlign: 'center',
-    marginBottom: 13,
+    fontWeight: 'bold',
   },
   buttons: {
     flexDirection: 'row',
@@ -262,11 +280,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: '#F2F2F2',
     height: 80,
-    marginTop: 'auto',
   },
   button: {
     borderRadius: 8,
   },
+  modalText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
 });
-
-export default AdvanceInformationScreen;

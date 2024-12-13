@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
   main: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: 275,
     paddingHorizontal: 10,
     marginLeft: 20,
   },
@@ -57,10 +56,10 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   choice: {
-    fontSize: 16,
-    fontWeight: '500',
+    fontSize: 14,
     color: '#00497C',
     flex: 1,
     textAlign: 'left',
+    fontFamily: 'Lato-Bold',
   },
 });
