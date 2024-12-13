@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
   },
   activeRadio: {
     // backgroundColor: '#e0f7fa',
+    borderColor: colors.bg.blue,
   },
   image: {
     width: 60,
@@ -91,15 +92,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginLeft: 16,
     color: '#333333',
-    fontWeight: '400',
-    // fontFamily: 'Aragon Sans SC Bold',
+    fontFamily: 'Lato-Bold',
   },
   textFullWidth: {
     marginLeft: 50,
   },
   circle: {
-    height: 20,
-    width: 20,
+    height: 18,
+    width: 18,
     borderRadius: 12,
     borderWidth: 2,
     borderColor: '#6b7280',
@@ -108,8 +108,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   innerCircle: {
-    height: 8,
-    width: 8,
+    height: 9,
+    width: 9,
     borderRadius: 6,
     backgroundColor: '#0266B3',
   },

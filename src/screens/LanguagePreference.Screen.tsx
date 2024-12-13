@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   texts: {
-    gap: 10,
+    gap: 14,
     marginTop: 19,
     alignSelf: 'center',
   },

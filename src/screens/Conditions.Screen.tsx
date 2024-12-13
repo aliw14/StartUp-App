@@ -32,6 +32,8 @@ export const ConditionsScreen: React.FC<
         isLast={isLast}
         additoinalText={item.additoinalText}
         additoinalTextTwo={item.additoinalTextTwo}
+        titleFontWeight="600"
+        titleFontSize={13}
       />
     );
   };

@@ -25,6 +25,19 @@ export interface IConditionsCart {
   additoinalTextTwo?: string;
   descriptionStyle?: StyleProp<ViewStyle>;
   rightIcon?: any;
+  titleFontWeight?:
+    | 'normal'
+    | 'bold'
+    | '100'
+    | '200'
+    | '300'
+    | '400'
+    | '500'
+    | '600'
+    | '700'
+    | '800'
+    | '900';
+  titleFontSize?: number;
 }
 
 export const ConditionsCart: React.FC<IConditionsCart> = ({
@@ -41,6 +54,8 @@ export const ConditionsCart: React.FC<IConditionsCart> = ({
   additoinalTextTwo,
   descriptionStyle,
   rightIcon,
+  titleFontWeight = 'normal',
+  titleFontSize = 16,
 }) => {
   const [contentHeight, setContentHeight] = useState(0);
 
@@ -68,7 +83,12 @@ export const ConditionsCart: React.FC<IConditionsCart> = ({
             style={styles.cart}>
             <View style={styles.contentContainer}>
               <View style={styles.textContainer}>
-                <Text style={[styles.title, titleColor && {color: titleColor}]}>
+                <Text
+                  style={[
+                    styles.title,
+                    titleColor && {color: titleColor},
+                    {fontWeight: titleFontWeight, fontSize: titleFontSize},
+                  ]}>
                   {title}
                 </Text>
                 <Text style={[styles.description, descriptionStyle]}>
@@ -122,6 +142,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     justifyContent: 'center',
+    fontFamily: 'RobotoMono',
   },
   line: {
     width: 2,
@@ -143,15 +164,14 @@ const styles = StyleSheet.create({
     paddingRight: 16,
   },
   title: {
-    fontSize: 18,
     color: colors.bg.blue,
-    fontFamily: 'Araboto Normal',
+    fontFamily: 'Lato-Bold',
     width: '90%',
   },
   description: {
     fontSize: 14,
     color: colors.black,
-    marginTop: 4,
+    marginTop: 7,
     fontFamily: 'Lato-Regular',
   },
   icon: {

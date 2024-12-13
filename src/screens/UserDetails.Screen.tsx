@@ -144,6 +144,8 @@ export const UserDetailsScreen: React.FC<
                     linkText={item.linkText}
                     isLast={isLast}
                     style={{marginVertical: 0}}
+                    titleFontSize={14}
+                    titleFontWeight="600"
                   />
                 );
               }}
@@ -215,7 +217,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerText: {
-    fontSize: 14,
+    fontSize: 12,
     color: colors.bg.blue,
     paddingHorizontal: 17,
     fontFamily: 'Lato-Bold',
@@ -235,7 +237,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 40,
     backgroundColor: '#F2F2F2',
-    fontSize: 14,
+    fontSize: 12,
     color: colors.bg.blue,
     textAlignVertical: 'center',
     justifyContent: 'center',
@@ -253,7 +255,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 40,
     backgroundColor: '#F2F2F2',
-    fontSize: 14,
+    fontSize: 12,
     color: colors.bg.blue,
     textAlignVertical: 'center',
     justifyContent: 'center',
@@ -262,8 +264,9 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold',
   },
   title: {
-    fontSize: 14,
+    fontSize: 12.5,
     color: '#878787',
+    marginBottom: 5,
   },
   desc: {
     fontFamily: 'Lato-Regular',
