@@ -21,6 +21,8 @@ import {Button} from '../components/Button';
 import FastImage from 'react-native-fast-image';
 import Captcha from '../components/Captcha';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import i18next from 'i18next';
+import {useTranslation} from 'react-i18next';
 
 export const AdvanceInformationScreen: React.FC<
   NativeStackScreenProps<NavigationParamList, Routes.advanceInformation>
@@ -31,6 +33,14 @@ export const AdvanceInformationScreen: React.FC<
   const [loading, setLoading] = useState<boolean>(false);
   const [isCaptchaPassed, setIsCaptchaPassed] = useState<boolean>(false);
   const [initialModalShown, setInitialModalShown] = useState<boolean>(false);
+
+  const {t} = useTranslation();
+
+  useEffect(() => {
+    if (!i18next.isInitialized) {
+      console.warn('i18next is not initialized yet!');
+    }
+  }, []);
 
   const captchaRef = useRef<any>(null);
 
@@ -94,7 +104,7 @@ export const AdvanceInformationScreen: React.FC<
 
         navigation.navigate(Routes.userList);
       } else {
-        setValidateResult('Please enter the matching letters and numbers');
+        setValidateResult(t('errorMessage'));
       }
     }, 2000);
   };
@@ -105,12 +115,12 @@ export const AdvanceInformationScreen: React.FC<
         leftActionType="icon"
         onLeftPress={navigation.goBack}
         left={vectors.arrow_left}
-        title="Advance Information"
+        title={t('headerText')}
         titleColor={colors.white}
         rightActionType="icon"
         right={vectors.human}
       />
-      <Text style={styles.text}>INSTRUCTIONS</Text>
+      <Text style={styles.text}>{t('title')}</Text>
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{left: 20, marginTop: 13, width: '82%'}}>
@@ -123,11 +133,11 @@ export const AdvanceInformationScreen: React.FC<
               <ConditionsCart
                 id={item.id}
                 titleColor={colors.black}
-                title={item.title}
-                description={item.description}
-                additoinalText={item.additoinalText}
-                additoinalTextTwo={item.additoinalTextTwo}
-                linkText={item.linkText}
+                title={t(item.title)}
+                description={t(item.description)}
+                additoinalText={t(item.additoinalText || '')}
+                additoinalTextTwo={t(item.additoinalTextTwo || '')}
+                linkText={t(item.linkText || '')}
                 isLast={isLast}
                 style={{marginVertical: 0}}
                 titleFontSize={15}
@@ -146,14 +156,14 @@ export const AdvanceInformationScreen: React.FC<
           height={19}
           textColor={colors.bg.openBlue}
           style={styles.button}
-          text="BACK"
+          text={t('backBtn')}
           onPress={() => navigation.goBack()}
         />
         <Button
           width={58}
           height={21}
           style={styles.button}
-          text="CONTINUE"
+          text={t('continueBtn')}
           textColor={colors.bg.openBlue}
           onPress={handleContinuePress}
         />
@@ -173,9 +183,7 @@ export const AdvanceInformationScreen: React.FC<
             />
           ) : (
             <View style={styles.modalContent}>
-              <Text style={styles.modalText}>
-                Enter the matching letters and numbers
-              </Text>
+              <Text style={styles.modalText}>{t('modalTitle')}</Text>
               <Captcha
                 ref={captchaRef}
                 backgroundImage={require('../assets/images/refreshBg.png')}
@@ -187,13 +195,13 @@ export const AdvanceInformationScreen: React.FC<
                   value={captcha}
                   onChangeText={setCaptcha}
                   cursorColor={'#333'}
-                  placeholder="Enter match"
+                  placeholder={t('modalPlaceholder')}
                   autoCapitalize="none"
                 />
                 <TouchableOpacity
                   style={styles.verifyButton}
                   onPress={handleVerifyPress}>
-                  <Text style={styles.buttonText}>Verify</Text>
+                  <Text style={styles.buttonText}>{t('VerifyBtn')}</Text>
                 </TouchableOpacity>
               </View>
               <Text style={{color: 'red'}}>{validateResult}</Text>
@@ -288,5 +296,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 10,
+    textAlign: 'center',
   },
 });

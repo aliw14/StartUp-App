@@ -7,6 +7,7 @@ import {Routes} from '../router/routes';
 import {colors} from '../theme/colors';
 import {Button} from '../components/Button';
 import {SvgImage} from '../components/SvgImage';
+import {t} from 'i18next';
 
 export const UserListScreen: React.FC<
   NativeStackScreenProps<NavigationParamList, Routes.userList>
@@ -17,7 +18,7 @@ export const UserListScreen: React.FC<
         leftActionType="icon"
         onLeftPress={navigation.goBack}
         left={vectors.arrow_left}
-        title="Advance Information"
+        title={t('headerText')}
         titleColor={colors.white}
         rightActionType="icon"
         right={vectors.human}
@@ -25,7 +26,7 @@ export const UserListScreen: React.FC<
       <Button
         onPress={() => navigation.navigate(Routes.userDetails)}
         style={styles.button}
-        text="REGISTER TRAVELERS"
+        text={t('registerTravelersBtn')}
         backgroundColor={colors.bg.blue}
         textColor={colors.white}
       />
@@ -45,11 +46,9 @@ export const UserListScreen: React.FC<
             onPress={() => navigation.navigate(Routes.userDetails)}
             style={styles.touchableContainer}>
             <Text style={[styles.title, {color: colors.black}]}>
-              APPOINTMENT SCHEDULED
+              {t('userListTitle')}
             </Text>
-            <Text style={styles.description}>
-              Garita El Chaparra / Pedwest San on Nov 15, 2024 at 20:00
-            </Text>
+            <Text style={styles.description}>{t('userListDescription')}</Text>
           </TouchableOpacity>
         </View>
       </View>

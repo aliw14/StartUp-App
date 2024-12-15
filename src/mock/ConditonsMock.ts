@@ -95,31 +95,32 @@ export const Traveler: IConditionsCart[] = [
 export const advanceInformation = [
     {
         id: 1,
-        title: 'Register Travelers',
-        description: 'Register everyone travelling together. Everyone must be going to the same United States address and have the same prior foreign address.',
+        title: "ListTitleFirst",
+        description: 'ListFirstDescription',
     },
     {
         id: 2,
-        title: 'Ask for an Appointment',
-        description: 'CBP One selects registered travelers for appointments',
-        additoinalText: 'To receive an appointment , you must ask for an appointment every day between11:00 AM CST and 11:00 PM CST.',
-        additoinalTextTwo: 'You must be within an authorized location to ask for an appointment. For more information on authorized locations , please visit: ',
-        linkText: 'CMP One Mobile Application | U.S. Customs and Border Protection.',
+        title: "ListTitleSecond",
+        description: 'ListSecondDescription',
+        additoinalText: 'ListadditoinalTextSecond',
+        additoinalTextTwo: 'ListadditoinalTextTwoTextSecond',
+        linkText: 'linkText',
     },
     {
         id: 3,
-        title: 'Accept and Schedule an Appointment',
-        description: 'If you receive an appointment , you must accept and schedule the appointment before 11:00 PM CST.',
-        additoinalText: 'To receive an appointment , you must ask for an appointment every day between11:00 AM CST and 11:00 PM CST.',
-        additoinalTextTwo: 'You must be within an authorized location to ask for an appointment. For more information on authorized locations , please visit: ',
-        linkText: 'CMP One Mobile Application | U.S. Customs and Border Protection.',
+        title: "ListTitleThird",
+        description: 'ListThirdDescription',
+        additoinalText: 'ListadditoinalTextThird',
+        additoinalTextTwo: 'ListadditoinalTextTwoTextThird',
+        linkText: 'linkText',
     },
     {
         id: 4,
-        title: 'Arrive at the Port of Entry',
-        description: 'Arrive at the Port of Entry for your scheduled appointment.',
+        title: "ListTitleFourth",
+        description: 'ListFourthDescription',
     },
-]
+];
+
 
 export const userDetails = [
     {
@@ -139,21 +140,21 @@ export const Steps = [
     {
         icon: require('../assets/vectors/done.svg'),
         // id:1,
-        title: 'Register Travelers',
+        title: 'ListTitleFirst',
     },
     {
         icon: require('../assets/vectors/done.svg'),
         // id:2,
-        title: 'Ask for an Appointment',
+        title: "ListTitleSecond",
     },
     {
         icon: require('../assets/vectors/done.svg'),
         // id:3,
-        title: 'Accept and Schedule an Appointment',
+        title: "ListTitleThird",
     },
     {
         id: 4,
-        title: 'Arrive at the Port of Entry',
-        description: 'Arrive at the Port of Entry for your scheduled appointment'
+        title: "ListTitleFourth",
+        description: 'ListFourthDescription',
     },
 ];

@@ -10,6 +10,7 @@ import {Button} from '../components/Button';
 import {FlashList} from '@shopify/flash-list';
 import {ConditionsCart, IConditionsCart} from '../components/ConditionsCart';
 import {Steps} from '../mock/ConditonsMock';
+import {t} from 'i18next';
 
 export const UserDetailsScreen: React.FC<
   NativeStackScreenProps<NavigationParamList, Routes.userDetails>
@@ -20,7 +21,7 @@ export const UserDetailsScreen: React.FC<
         leftActionType="icon"
         onLeftPress={navigation.goBack}
         left={vectors.arrow_left}
-        title="Advance Information"
+        title={t('headerText')}
         titleColor={colors.white}
         rightActionType="icon"
         right={vectors.human}
@@ -48,33 +49,25 @@ export const UserDetailsScreen: React.FC<
                 marginTop: 10,
                 fontFamily: 'Lato-Bold',
               }}>
-              APPOINTMENT SCHEDULED
+              {t('greenText')}
             </Text>
-            <Text style={styles.description}>
-              Your appointment is scheduled: Garita El Chaparra / Pedwest San
-              Ysidro on 15 Nov 2024 at 20:00.
-            </Text>
+            <Text style={styles.description}>{t('detailsBoldText')}</Text>
           </View>
           <View style={[styles.bottomText, {width: 329, height: 102}]}>
-            <Text style={styles.text}>
-              Your appointment ay a Port of Entry was successfully scheduled.
-            </Text>
-            <Text style={styles.text}>
-              Please save your confirmation number(s). A confirmation email was
-              sent to the email address you used to log in to CBP One.
-            </Text>
+            <Text style={styles.text}>{t('detailsTextOne')}</Text>
+            <Text style={styles.text}>{t('detailsTextTwo')}</Text>
           </View>
         </View>
 
         <Button
           style={styles.button}
           backgroundColor="#FBFBFB"
-          text="CANCEL APPOINTMENT"
+          text={t('cancelBtn')}
           textColor={colors.red.line}></Button>
         <View style={styles.travelers}>
           <View style={styles.header}>
-            <Text style={styles.headerText}>TRAVELERS</Text>
-            <Text style={styles.headerText}>CONFIRMATION NUMBER</Text>
+            <Text style={styles.headerText}>{t('detailsTitleFirst')}</Text>
+            <Text style={styles.headerText}>{t('detailsTitleSecond')}</Text>
           </View>
           <View style={styles.travelersDesc}>
             <View
@@ -100,26 +93,34 @@ export const UserDetailsScreen: React.FC<
           </View>
         </View>
         <View style={styles.appointmentDetails}>
-          <Text style={[styles.appointmetHeader]}>APPOINTMENT DETAILS</Text>
+          <Text style={[styles.appointmetHeader]}>
+            {t('detailsTitleThird')}
+          </Text>
           <View style={styles.appointmentDesc}>
             <View>
-              <Text style={styles.title}>Port of Entry</Text>
+              <Text style={styles.title}>
+                {t('appointmentDetailsTitleFirst')}
+              </Text>
               <Text style={styles.desc}>
                 Garita El Chaparra / Pedwest San Ysidro
               </Text>
             </View>
             <View>
-              <Text style={styles.title}>Date</Text>
+              <Text style={styles.title}>
+                {t('appointmentDetailsTitleSecond')}
+              </Text>
               <Text style={styles.desc}>15 Nov 2024</Text>
             </View>
             <View>
-              <Text style={styles.title}>Time</Text>
+              <Text style={styles.title}>
+                {t('appointmentDetailsTitleThird')}
+              </Text>
               <Text style={styles.desc}>20:00</Text>
             </View>
           </View>
         </View>
         <View style={styles.appointmentDetails}>
-          <Text style={styles.steps}>NEXT STEPS</Text>
+          <Text style={styles.steps}>{t('detailsTitleFourth')}</Text>
           <View style={styles.appointmentDesc}>
             <FlashList
               scrollEnabled={false}
@@ -137,8 +138,8 @@ export const UserDetailsScreen: React.FC<
                     id={item.id}
                     icon={item.icon}
                     titleColor={colors.black}
-                    title={item.title}
-                    description={item.description}
+                    title={t(item.title || '')}
+                    description={t(item.description || '')}
                     additoinalText={item.additoinalText}
                     additoinalTextTwo={item.additoinalTextTwo}
                     linkText={item.linkText}
@@ -164,7 +165,7 @@ export const UserDetailsScreen: React.FC<
           <Button
             backgroundColor="#F2F2F2"
             style={styles.ednButton}
-            text="BACK"
+            text={t('backBtn')}
             textColor={colors.bg.openBlue}
             onPress={() => navigation.goBack()}></Button>
         </View>
