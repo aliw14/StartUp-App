@@ -1,78 +1,102 @@
+import React, {useState, useEffect} from 'react';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
+import i18next from 'i18next';
+import {Button} from '../components/Button';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {Routes} from '../router/routes';
+import {NavigationParamList} from '../types/navigation.type';
+import {Radio} from '../components/Radio';
 import {Header} from '../components/Header';
 import {colors} from '../theme/colors';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {NavigationParamList} from '../types/navigation.type';
-import {Routes} from '../router/routes';
-import {Radio} from '../components/Radio';
-import {Button} from '../components/Button';
 
 export const LanguagePreferenceScreen: React.FC<
   NativeStackScreenProps<NavigationParamList, Routes.languagePreference>
 > = ({navigation}) => {
-  const [selectedValue, setSelectedValue] = useState('Land | Tierra');
+  const {t} = useTranslation();
+  const [selectedValue, setSelectedValue] = useState(i18next.language);
+  const [_, setRender] = useState(false);
+
+  useEffect(() => {
+    if (!i18next.isInitialized) {
+      console.warn('i18next is not initialized yet!');
+    }
+  }, []);
+
+  const changeLng = (lng: string) => {
+    i18next.changeLanguage(lng).then(() => {
+      setSelectedValue(lng);
+      setRender(prev => !prev);
+    });
+  };
 
   const options = [
-    {
-      label: 'English',
-      value: 'English',
-    },
-    {
-      label: 'Español',
-      value: 'Español',
-    },
-    {
-      label: 'Kreyòl asisyen',
-      value: 'Kreyòl asisyen',
-    },
+    {label: 'English', value: 'en'},
+    {label: 'Español', value: 'esp'},
+    {label: 'Kreyòl asisyen', value: 'kre'},
   ];
 
   return (
     <SafeAreaView style={styles.container}>
       <Header
         leftActionType="icon"
-        left={vectors.arrow_left}
+        left={{
+          icon: require('../assets/vectors/arrow_left.svg'),
+          width: 24,
+          height: 24,
+          color: colors.white,
+        }}
         onLeftPress={navigation.goBack}
         title="Language Preference"
         rightActionType="icon"
-        right={vectors.human}
+        right={{
+          icon: require('../assets/vectors/human.svg'),
+          width: 24,
+          height: 24,
+          color: colors.white,
+        }}
         titleColor={colors.white}
       />
       <View style={styles.texts}>
         <Text style={styles.text}>
-          Please select from the options provided below.
+          {t('Please select from the options below.')}
         </Text>
         <Text style={styles.text}>
-          Por favor seleccione una de las opciones a continuacion.
+          {t('Por favor seleccione una de las opciones a continuación.')}
         </Text>
         <Text style={[styles.text, {paddingBottom: 20}]}>
-          Tanpri chwazi nan opsyon yo bay anba a.
+          {t('Tanpri chwazi nan opsyon yo bay anba a.')}
         </Text>
       </View>
+
       <View style={styles.line}></View>
+
       <Radio
         style={{left: -20, marginTop: 20}}
         options={options}
         checkedValue={selectedValue}
-        onChange={setSelectedValue}
-        onPress={() => console.log('Language selected')}
+        onChange={value => {
+          setSelectedValue(value);
+          changeLng(value);
+        }}
       />
+
       <View style={styles.buttonContainer}>
         <View style={styles.buttons}>
           <Button
             width={58}
-            height={19}
-            textColor={colors.bg.openBlue}
+            height={21}
             style={styles.button}
-            text="BACK"
+            text={t('backBtn')}
+            textColor={colors.bg.openBlue}
             onPress={() => navigation.goBack()}
           />
+
           <Button
             width={58}
             height={21}
             style={styles.button}
-            text="CONTINUE"
+            text={t('continueBtn')}
             textColor={colors.bg.openBlue}
             onPress={() => navigation.navigate(Routes.advanceInformation)}
           />
@@ -119,17 +143,17 @@ const styles = StyleSheet.create({
   },
 });
 
-const vectors = {
-  arrow_left: {
-    icon: require('../assets/vectors/arrow_left.svg'),
-    width: 24,
-    height: 24,
-    color: colors.white,
-  },
-  human: {
-    icon: require('../assets/vectors/human.svg'),
-    width: 24,
-    height: 24,
-    color: colors.white,
-  },
-};
+// const vectors = {
+//   arrow_left: {
+//     icon: require('../assets/vectors/arrow_left.svg'),
+//     width: 24,
+//     height: 24,
+//     color: colors.white,
+//   },
+//   human: {
+//     icon: require('../assets/vectors/human.svg'),
+//     width: 24,
+//     height: 24,
+//     color: colors.white,
+//   },
+// };
