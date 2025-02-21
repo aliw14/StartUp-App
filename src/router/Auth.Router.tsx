@@ -34,6 +34,8 @@ import {LanguagePreferenceScreen} from '../screens/LanguagePreference.Screen';
 import {AdvanceInformationScreen} from '../screens/AdvanceInformation.Screen';
 import {UserListScreen} from '../screens/UserList';
 import {UserDetailsScreen} from '../screens/UserDetails.Screen';
+import {BrokerScreen} from '../screens/Broker.Screen';
+import {EditBrokerScreen} from '../screens/EditBroker.Screen';
 
 const AuthStack = createNativeStackNavigator<NavigationParamList>();
 const Drawer = createDrawerNavigator<NavigationParamList>();
@@ -72,6 +74,14 @@ export const AuthRouter = () => {
         <AuthStack.Screen
           name={Routes.userDetails}
           component={UserDetailsScreen}
+        />
+        <AuthStack.Screen
+          name={Routes.brokerScreen}
+          component={BrokerScreenWithDrawer}
+        />
+        <AuthStack.Screen
+          name={Routes.editBroker}
+          component={EditBrokerScreen}
         />
       </AuthStack.Navigator>
     </SafeAreaView>
@@ -168,6 +178,99 @@ export const HomeScreenWithDrawer: React.FC<
         </DrawerContentScrollView>
       )}>
       <Drawer.Screen name={Routes.home} component={HomeScreen} />
+    </Drawer.Navigator>
+  );
+};
+export const BrokerScreenWithDrawer: React.FC<
+  NativeStackScreenProps<NavigationParamList, Routes.brokerScreen>
+> = () => {
+  return (
+    <Drawer.Navigator
+      initialRouteName={Routes.brokerScreen}
+      screenOptions={{
+        headerShown: true,
+        title: 'Broker/Carrier/Forwarder',
+        headerStyle: {backgroundColor: colors.bg.blue},
+        headerTitleStyle: {color: colors.white},
+        headerTitleAlign: 'center',
+        headerTintColor: colors.white,
+      }}
+      drawerContent={props => (
+        <DrawerContentScrollView {...props}>
+          <Image
+            style={{
+              width: Dimensions.get('screen').width,
+              height: 143,
+              left: -12,
+            }}
+            source={require('../assets/images/sidebarBg.png')}></Image>
+          <Image
+            style={styles.imageTwo}
+            source={require('../assets/images/sidebarBgtwo.png')}></Image>
+          <View style={styles.lineOne}></View>
+          <DrawerItem
+            label="Home"
+            onPress={() => props.navigation.navigate(Routes.aboutYou)}
+            labelStyle={{color: colors.black}}
+            icon={() => (
+              <SvgImage
+                source={require('../assets/vectors/home.svg')}
+                style={{
+                  width: 24,
+                  height: 24,
+                }}
+              />
+            )}
+          />
+          <Text style={{left: 20, color: colors.bg.blue}}>
+            Broker/Carrier/Forwarder
+          </Text>
+          <View style={styles.line}></View>
+          <DrawerItem
+            label="Notifications"
+            onPress={() => console.log('Notifications pressed')}
+            labelStyle={{color: colors.black}}
+            icon={() => (
+              <SvgImage
+                source={require('../assets/vectors/notification.svg')}
+                style={{
+                  width: 24,
+                  height: 24,
+                }}
+              />
+            )}
+          />
+          <DrawerItem
+            label="Help"
+            onPress={() => console.log('Help pressed')}
+            labelStyle={{color: colors.black}}
+            icon={() => (
+              <SvgImage
+                source={require('../assets/vectors/information.svg')}
+                style={{
+                  width: 24,
+                  height: 24,
+                }}
+              />
+            )}
+          />
+          <DrawerItem
+            label="Logout"
+            onPress={() => console.log('Logout pressed')}
+            labelStyle={{color: colors.black}}
+            icon={() => (
+              <SvgImage
+                source={require('../assets/vectors/logout.svg')}
+                style={{
+                  width: 24,
+                  height: 24,
+                }}
+              />
+            )}
+          />
+        </DrawerContentScrollView>
+      )}>
+      <Drawer.Screen name={Routes.brokerScreen} component={BrokerScreen} />
     </Drawer.Navigator>
   );
 };

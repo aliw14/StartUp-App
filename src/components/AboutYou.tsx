@@ -11,7 +11,6 @@ import {
 
 export interface IAboutYou {
   id?: number;
-
   image?: React.FC<SvgProps> | ImageSourcePropType;
   choice?: string;
   onPress?: () => void;

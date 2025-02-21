@@ -9,5 +9,7 @@ export enum Routes {
     languagePreference = 'languagePreference',
     advanceInformation = 'advanceInformation',
     userList = 'userList',
-    userDetails = 'userDetails'
+    userDetails = 'userDetails',
+    brokerScreen = 'brokerScreen',
+    editBroker = 'editBroker'
 }
