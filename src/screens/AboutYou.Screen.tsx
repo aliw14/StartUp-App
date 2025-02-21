@@ -23,16 +23,29 @@ export const AboutYouScreen: React.FC<
 > = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handlePress = () => {
+  const handlePress = (choice: string) => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      navigation.navigate(Routes.selectTravel);
+      switch (choice) {
+        case 'Traveler | Viajero':
+          navigation.navigate(Routes.selectTravel);
+          break;
+        case 'Broker / Carrier / Forwarder':
+          navigation.navigate(Routes.editBroker);
+          break;
+        default:
+          navigation.navigate(Routes.selectTravel);
+      }
     }, 2000);
   };
 
   const renderItem = ({item}: {item: IAboutYou}) => (
-    <AboutYou onPress={handlePress} image={item.image} choice={item.choice} />
+    <AboutYou
+      onPress={() => handlePress(item.choice || '')}
+      image={item.image}
+      choice={item.choice}
+    />
   );
 
   return (
@@ -101,7 +114,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '400',
     marginTop: 8,
-    width:"110%"
+    width: '110%',
   },
   modalContainer: {
     flex: 1,

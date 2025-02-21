@@ -15,4 +15,6 @@ export type NavigationParamList = {
     [Routes.advanceInformation]: undefined;
     [Routes.userList]: undefined;
     [Routes.userDetails]: undefined;
+    [Routes.brokerScreen]: undefined;
+    [Routes.editBroker]: undefined;
 };
